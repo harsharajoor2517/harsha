@@ -1,0 +1,75 @@
+Implement SIEM in Microsoft Azure
+Phase 1: Creating Azure Account
+Step 1: Sign up for a free Azure account.
+Go to Azure Portal and sign up.
+You will need to enter a credit card, but you get $200 worth of free credits for the first month.
+Step 2: Create a resource group.
+Navigate to the Azure Portal.
+Click on "Resource groups" and create a new resource group named "HoneypotLab".
+Phase 2: Creating Windows Remote Server
+Step 1: Create a Virtual Machine (VM).
+Go to the Azure Portal and click on "Create a resource".
+Select "Virtual machine".
+Create a new resource group named "HoneypotLab" or use an existing one.
+Name the VM "HoneypotVM".
+Choose a region (e.g., West US 2).
+Select an image and size (default settings are fine).
+Create a username and password for the VM.
+Step 2: Configure the VM's network settings.
+Under "Networking", create a new Network Security Group (NSG).
+Set the inbound rules to allow all traffic from the internet (use a wildcard * for the destination port and protocol).
+Name the rule "AllowAllIn".
+Phase 3: Setting Up Log Analytics Workspace
+Step 1: Create a Log Analytics Workspace.
+Go to the Azure Portal and search for "Log Analytics Workspace".
+Create a new workspace within the "HoneypotLab" resource group.
+Name it "LAHoneypot".
+Choose the same region as the VM (e.g., West US 2).
+Step 2: Connect the Log Analytics Workspace to the VM.
+Navigate to the Log Analytics Workspace.
+Click on "Virtual machines" and connect the "HoneypotVM" to the workspace.
+Phase 4: Configuring Security Center
+Step 1: Enable log collection in Security Center.
+Go to "Security Center" in the Azure Portal.
+Navigate to "Pricing + settings".
+Select the Log Analytics Workspace created earlier.
+Enable "Defender for Servers".
+Under "Data collection", ensure that all events are collected and saved.
+Phase 5: Setting Up Azure Sentinel
+Step 1: Create an Azure Sentinel instance.
+Go to the Azure Portal and search for "Azure Sentinel".
+Create a new Azure Sentinel instance.
+Connect it to the Log Analytics Workspace "LAHoneypot".
+Phase 6: Configuring the VM for Data Collection
+Step 1: Turn off the Windows Firewall on the VM.
+Log into the VM using Remote Desktop.
+Open "Windows Defender Firewall" and turn off the firewall for Domain, Private, and Public profiles.
+Step 2: Download and configure the PowerShell script.
+Download the PowerShell script from GitHub.
+Open PowerShell ISE on the VM.
+Paste the script and save it as "LogExporter.ps1" on the desktop.
+Obtain an API key from ipgeolocation.io and insert it into the script.
+Run the script to start collecting geolocation data from failed RDP login attempts.
+Phase 7: Creating Custom Logs in Log Analytics
+Step 1: Create a custom log in Log Analytics Workspace.
+Go to the Log Analytics Workspace in the Azure Portal.
+Navigate to "Custom logs" and add a new custom log.
+Use the log file path C:\ProgramData\failed_rdp.log (ensure the path is correct).
+Name the custom log "FailedRDPWithGeo_CL".
+Step 2: Extract fields from the custom log.
+Run a sample log through the extraction process.
+Extract fields such as latitude, longitude, country, state, username, source host, and timestamp.
+Ensure the fields are correctly parsed and saved.
+Phase 8: Visualizing Data in Azure Sentinel
+Step 1: Create a workbook in Azure Sentinel.
+Go to Azure Sentinel and navigate to "Workbooks".
+Create a new workbook and remove default widgets.
+Add a query to visualize failed RDP login attempts using the extracted fields.
+Use latitude and longitude to plot the data on a world map.
+Save the workbook as "FailedRDPWorldMap".
+Phase 9: Monitoring and Analysis
+Step 1: Monitor the workbook for incoming data.
+Refresh the workbook periodically to see new login attempts.
+Analyze the data to identify patterns and sources of attacks.
+Adjust the workbook settings as needed to improve visualization accuracy.
+By following these phases and steps, you can set up a SIEM system in Microsoft Azure to monitor and visualize global RDP brute-force attack data.

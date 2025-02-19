@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Subnetting Guide</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #111;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #0f0;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2, h3 {
+            color: #0ff;
+        }
+
+        code {
+            background-color: #111;
+            padding: 0.2rem;
+            border-radius: 0.2rem;
+        }
+
+        #game-container {
+            background-color: #111;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        #question, #result {
+            margin-bottom: 1rem;
+        }
+
+        #answer {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            background-color: #111;
+            color: #0f0;
+            border: none;
+            border-radius: 0.2rem;
+        }
+
+        button {
+            padding: 0.5rem;
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            border-radius: 0.2rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #111;
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cyber Subnetting Guide</h1>
+        <nav>
+            <ul>
+                <li><a href="#ipv4-subnetting">IPv4 Subnetting</a></li>
+                <li><a href="#ipv6-subnetting">IPv6 Subnetting</a></li>
+                <li><a href="#interactive-game">Interactive Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ipv4-subnetting">
+            <h2>IPv4 Subnetting</h2>
+            <p>Gain hands-on experience with subnet masking, subnet calculation, and host calculation for IPv4 addresses.</p>
+            <h3>IPv4 Subnet Mask Calculation</h3>
+            <p>The CIDR notation <code>/24</code> indicates that the first 24 bits are for the network portion. This results in a subnet mask of <code>255.255.255.0</code> in decimal format.</p>
+            <h3>IPv4 Subnetting</h3>
+            <p>To create 4 subnets, borrow 2 bits from the host portion. The new CIDR notation is <code>/26</code>.</p>
+            <ul>
+                <li><strong>Subnet 1:</strong> 10.10.0.0 with the range 10.10.0.0 - 10.10.0.63</li>
+                <li><strong>Subnet 2:</strong> 10.10.0.64 with the range 10.10.0.64 - 10.10.0.127</li>
+                <li><strong>Subnet 3:</strong> 10.10.0.128 with the range 10.10.0.128 - 10.10.0.191</li>
+                <li><strong>Subnet 4:</strong> 10.10.0.192 with the range 10.10.0.192 - 10.10.0.255</li>
+            </ul>
+            <h3>IPv4 Host Calculation</h3>
+            <p>For a network address <code>10.10.0.0</code> with a subnet mask <code>255.255.255.192</code> (CIDR <code>/26</code>), there are 6 bits available for host addresses. The number of usable hosts is \(2^6 - 2 = 62\).</p>
+        </section>
+
+        <section id="ipv6-subnetting">
+            <h2>IPv6 Subnetting</h2>
+            <p>Gain hands-on experience with subnet masking, subnet calculation, and host calculation for IPv6 addresses.</p>
+            <h3>IPv6 Subnet Mask Calculation</h3>
+            <p>To create 16 subnets, borrow 4 bits from the host portion. The new CIDR notation is <code>/52</code>.</p>
+            <ul>
+                <li><strong>Subnet 1:</strong> 2001:db8::/52</li>
+                <li><strong>Subnet 2:</strong> 2001:db8:1000::/52</li>
+                <li><strong>Subnet 3:</strong> 2001:db8:2000::/52</li>
+                <li><strong>Subnet 4:</strong> 2001:db8:3000::/52</li>
+            </ul>
+            <h3>IPv6 Host Calculation</h3>
+            <p>For a subnet mask <code>/64</code>, there are 64 bits available for host addresses. The number of possible hosts is \(2^{64}\), approximately \(1.84 \times 10^{19}\).</p>
+        </section>
+
+        <section id="interactive-game">
+            <h2>Interactive Subnetting Game</h2>
+            <p>Test your subnetting skills with this interactive game!</p>
+            <div id="game-container">
+                <div id="question"></div>
+                <input type="text" id="answer" placeholder="Enter your answer">
+                <button id="submit">Submit</button>
+                <div id="result"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Cyber Subnetting Guide</p>
+    </footer>
+
+    <script>
+        const questions = [
+            { question: "What is the subnet mask for /24?", answer: "255.255.255.0" },
+            { question: "What is the subnet mask for /26?", answer: "255.255.255.192" },
+            { question: "What is the new CIDR notation if you borrow 2 bits from the host portion of /24?", answer: "/26" },
+            { question: "What is the new CIDR notation if you borrow 4 bits from the host portion of /48?", answer: "/52" }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const questionElement = document.getElementById('question');
+            questionElement.textContent = questions[currentQuestionIndex].question;
+        }
+
+        function checkAnswer() {
+            const answerElement = document.getElementById('answer');
+            const resultElement = document.getElementById('result');
+            const userAnswer = answerElement.value.trim();
+
+            if (userAnswer.toLowerCase() === questions[currentQuestionIndex].answer.toLowerCase()) {
+                resultElement.textContent = "Correct!";
+                resultElement.style.color = "#0f0";
+            } else {
+                resultElement.textContent = "Incorrect. Try again.";
+                resultElement.style.color = "#f00";
+            }
+
+            answerElement.value = '';
+            currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+            displayQuestion();
+        }
+
+        document.getElementById('submit').addEventListener('click', checkAnswer);
+
+        displayQuestion();
+    </script>
+</body>
+</html>

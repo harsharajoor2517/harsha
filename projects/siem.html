@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Laralink">
+  <!-- Favicon Icon -->
+  <link rel="icon" href="../assets/img/favicon.png">
+  <!-- Site Title -->
+  <title>SIEM Project Details</title>
+  <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/fontawesome.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/odometer-theme-default.css">
+  <link rel="stylesheet" href="../assets/css/plugins/select2.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/animate.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <div class="cs_preloader cs_center">
+    <div class="cs_preloader_in"></div>
+  </div>
+  <!-- Start Header Section -->
+  <header class="cs_site_header cs_style_1 cs_sticky_header">
+    <div class="cs_main_header">
+      <div class="container">
+        <div class="cs_main_header_in">
+          <div class="cs_main_header_left">
+            <a class="cs_site_branding" href="../index.html">
+              <img src="../assets/img/logo.svg" alt="Logo">
+            </a>
+          </div>
+          <div class="cs_main_header_center">
+            <div class="cs_nav">
+              <ul class="cs_nav_list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Projects.html">Back to Projects</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="cs_main_header_right">
+            <a href="../contact.html" class="cs_btn cs_style_1 cs_primary_font"><span>Hire Me</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header Section -->
+
+  <!-- Main content inside start-->
+  <main>
+    <!-- Start Hero Section -->
+    <section class="cs_hero cs_style_3 cs_type_2 cs_filled_bg text-center" data-src="../assets/img/bg/hero_bg_5.svg">
+      <div class="container">
+        <div class="cs_height_150 cs_height_lg_150"></div>
+        <div class="cs_height_60 cs_height_lg_30"></div>
+        <h1 class="cs_hero_title cs_font_92 cs_extra_bold wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+          <span class="cs_gradient_text_2">SIEM Technology</span>
+        </h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../Projects.html">Projects</a></li>
+          <li class="breadcrumb-item active">SIEM Project</li>
+        </ol>
+      </div>
+    </section>
+    <!-- Rest of the content remains the same but update image paths -->
+    <div class="container">
+      <div class="cs_image_box cs_style_5 cs_radius_15">
+        <img class="cs_radius_10 w-100" src="/projects/images/p1.jpg" alt="project-details">
+      </div>
+      <!-- ... rest of the content ... -->
+    </div>
+
+    <!-- Update the content section after the hero image -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="cs_category cs_style_1 cs_white_bg cs_radius_10">
+              <ul class="cs_mp_0">
+                <li class="active"><a href="#overview">Overview</a></li>
+                <li><a href="#azure-cloud">Microsoft Azure Cloud</a></li>
+                <li><a href="#honeypot">Honeypot Setup</a></li>
+                <li><a href="#rdp-data">RDP Data Collection</a></li>
+                <li><a href="#sentinel">Azure Sentinel</a></li>
+                <li><a href="#siem-benefits">SIEM Benefits</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="cs_pl_70">
+              <div class="cs_portfoli_details cs_style_1">
+                <div id="overview">
+                  <h2 class="cs_portfolio_title cs_font_48">Project Overview</h2>
+                  <p class="cs_portfolio_text">This project demonstrates the implementation of a Security Information and Event Management (SIEM) system using Microsoft Azure Sentinel to monitor and analyze RDP brute force attacks from around the world using a honeypot system.</p>
+                </div>
+
+                <div id="azure-cloud" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Microsoft Azure Cloud</h2>
+                <p class="cs_portfolio_text">Microsoft Azure provides a robust cloud platform for implementing security solutions. Key components used in this project:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Virtual Machine deployment for honeypot setup</li>
+                  <li>Log Analytics Workspace for data collection</li>
+                  <li>Azure Sentinel for SIEM implementation</li>
+                  <li>Real-time monitoring and visualization capabilities</li>
+                </ul>
+
+                <div id="honeypot" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Honeypot Implementation</h2>
+                <p class="cs_portfolio_text">A honeypot is created to deliberately attract potential attackers, allowing us to:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Monitor attack patterns and techniques</li>
+                  <li>Collect data about attack origins</li>
+                  <li>Understand common attack vectors</li>
+                  <li>Test security measures in a controlled environment</li>
+                </ul>
+
+                <div id="rdp-data" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">RDP Failed LOG data Collection</h2>
+                <p class="cs_portfolio_text">The project utilizes a custom PowerShell script to:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Extract RDP failed logon logs from Windows Event Viewer</li>
+                  <li>Parse out Windows Event Log information</li>
+                  <li>Collect geographic information about attackers using ipgeolocation.io API</li>
+                  <li>Generate custom logs with detailed attack data</li>
+                </ul>
+
+                <div id="sentinel" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Azure Sentinel</h2>
+                <p class="cs_portfolio_text">Azure Sentinel serves as the SIEM solution, providing:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Real-time threat detection and visualization</li>
+                  <li>Geographic mapping of attack sources</li>
+                  <li>Advanced analytics and machine learning capabilities</li>
+                  <li>Automated incident response workflows</li>
+                </ul>
+
+                <div id="siem-benefits" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">SIEM Advantages</h2>
+                <p class="cs_portfolio_text">Implementation of SIEM technology provides numerous benefits:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Centralized security event monitoring and management</li>
+                  <li>Real-time threat detection and alerting</li>
+                  <li>Automated incident response capabilities</li>
+                  <li>Compliance reporting and audit trail maintenance</li>
+                  <li>Enhanced visibility into security posture</li>
+                </ul>
+
+                <div class="cs_portfolio_details_wrap row cs_height_45 cs_height_lg_30">
+                  <div class="col-md-4">
+                    <h4 class="cs_font_20 m-0">Technology Stack</h4>
+                    <p class="m-0">Azure Cloud, PowerShell, SIEM</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h4 class="cs_font_20 m-0">Project Type</h4>
+                    <p class="m-0">Cloud Security, Threat Detection</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h4 class="cs_font_20 m-0">Source</h4>
+                    <p class="m-0"><a href="https://github.com/joshmadakor1/Sentinel-Lab" target="_blank">GitHub Repository</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cs_height_145 cs_height_lg_75"></div>
+    </section>
+  </main>
+
+  <!-- Start Footer -->
+  <footer class="cs_footer cs_style_1 cs_filled_bg position-relative" data-src="../assets/img/bg/footer_bg.svg">
+    <div class="position-absolute cs_footer_shape_1">
+      <img src="../assets/img/footer_shape.svg" alt="">
+    </div>
+    <div class="container">
+      <div class="cs_footer_cta">
+        <h2 class="cs_font_92 cs_gradient_text_2 cs_semi_bold">Have a project?</h2>
+        <a href="../contact.html" class="cs_btn cs_style_1 cs_primary_font"><span>Let's Talk</span></a>
+      </div>
+      <div class="cs_copyright">RAJOOR</div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- Script -->
+  <script src="../assets/js/plugins/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/plugins/gsap.min.js"></script>
+  <script src="../assets/js/plugins/isotope.pkg.min.js"></script>
+  <script src="../assets/js/plugins/odometer.min.js"></script>
+  <script src="../assets/js/plugins/wow.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html> 

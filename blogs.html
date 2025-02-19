@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Laralink">
+  <!-- Favicon Icon -->
+  <link rel="icon" href="assets/img/favicon.png">
+  <!-- Site Title -->
+  <title>My blogs</title>
+  <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/plugins/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/plugins/odometer-theme-default.css">
+  <link rel="stylesheet" href="assets/css/plugins/select2.min.css">
+  <link rel="stylesheet" href="assets/css/plugins/animate.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Grid Styles */
+    .cs_blog_grid {
+      padding: 50px 0;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      margin: 0 0 1rem 0;
+      font-size: 1.2rem;
+      color: var(--cs_heading_color);
+    }
+
+    .card-details {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #f1f1f1;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 1200px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Category Filter Styles */
+    .cs_content_wrapper {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 15px;
+      position: relative;
+    }
+
+    .cs_main_content {
+      flex: 0 0 80%;
+      max-width: 80%;
+    }
+
+    .cs_category_filter {
+      flex: 0 0 20%;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 100px;
+      height: auto;
+      overflow: visible;
+      margin-left: auto;
+    }
+
+    .cs_category_title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--cs_heading_color);
+      font-weight: 600;
+    }
+
+    .cs_category_list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cs_category_item {
+      margin-bottom: 0.8rem;
+    }
+
+    .cs_category_btn {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: none;
+      background: #f5f5f5;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--cs_heading_color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs_category_btn:hover {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: #ffffff;
+    }
+
+    .cs_category_btn.active {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    }
+
+    .cs_category_btn.active::after {
+      content: '';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .cs_content_wrapper {
+        flex-direction: column-reverse;
+      }
+
+      .cs_main_content,
+      .cs_category_filter {
+        flex: 0 0 100%;
+        max-width: 100%;
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<!-- Start Header Section -->
+<header class="cs_site_header cs_style_1 cs_sticky_header">
+  <div class="cs_main_header">
+    <div class="container">
+      <div class="cs_main_header_in">
+        <div class="cs_main_header_left">
+          <a class="cs_site_branding" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo">
+          </a>
+        </div>
+        <div class="cs_main_header_center">
+          <div class="cs_nav">
+            <ul class="cs_nav_list">
+              <li class="active menu-item-has-children"><a href="index.html">Home</a></li>
+              <li class="menu-item-has-children"><a href="about.html">About</a></li>
+              <li class="menu-item-has-children"><a href="Projects.html">Projects</a></li>
+              <li class="menu-item-has-children"><a href="Certificates.html">Certificates</a></li>
+              <li class="menu-item-has-children"><a href="blogs.html">Blog</a></li>
+              <li> <a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs_main_header_right">
+          <a href="contact.html" class="cs_btn cs_style_1 cs_primary_font"><span>Hire Me</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- End Header Section -->
+
+<!-- Main content start-->
+<main>
+  <!-- Start Hero Section -->
+  <section class="cs_hero cs_style_3 cs_type_1 cs_filled_bg cs_center text-center"
+    data-src="assets/img/bg/hero_bg_5.svg">
+    <div class="container">
+      <div class="cs_height_45 cs_height_lg_45"></div>
+      <h1 class="cs_hero_title cs_font_92 cs_extra_bold wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+        <span class="cs_gradient_text_2">My Blogs</span>
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">My Blogs</li>
+      </ol>
+    </div>
+  </section>
+  <!-- End Hero Section -->
+
+  <!-- Add this in the main content section after the Hero section -->
+  <section class="cs_blog_grid">
+    <div class="container">
+      <div class="cs_content_wrapper">
+        <div class="cs_main_content">
+          <div class="grid-container" id="gridContainer"></div>
+        </div>
+        <aside class="cs_category_filter">
+          <h3 class="cs_category_title">Categories</h3>
+          <ul class="cs_category_list">
+            <li class="cs_category_item">
+              <button class="cs_category_btn active" data-category="all">All Categories</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="Hacking">Hacking</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="Web">Web</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="KALI LINUX">KALI LINUX</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="Cryptography">Cryptography</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="Forensic">Forensic</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="Stegnography">Stegnography</button>
+            </li>
+            <li class="cs_category_item">
+              <button class="cs_category_btn" data-category="misc">Misc</button>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section Removed -->
+</main>
+<!-- Main content end-->
+
+<!-- Start Footer -->
+<footer class="cs_footer cs_style_1 cs_filled_bg position-relative" data-src="assets/img/bg/footer_bg.svg">
+  <div class="position-absolute cs_footer_shape_1">
+    <img src="assets/img/footer_shape.svg" alt="">
+  </div>
+  <div class="container">
+    <div class="cs_footer_cta">
+      <h2 class="cs_font_92 cs_gradient_text_2 cs_semi_bold">Check protfolio</h2>
+      <a href="temp.html" class="cs_btn cs_style_1 cs_primary_font"><span>About Me</span></a>
+    </div>
+    <div class="cs_copyright">© 2023 <a href="#">Laralink</a>. All rights reserved</div>
+  </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Script -->
+<script src="assets/js/plugins/jquery-3.6.0.min.js"></script>
+<script src="assets/js/plugins/gsap.min.js"></script>
+<script src="assets/js/plugins/isotope.pkg.min.js"></script>
+<script src="assets/js/plugins/odometer.min.js"></script>
+<script src="assets/js/plugins/wow.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Add this script before closing body tag -->
+<script>
+  // Grid Population Script
+  document.addEventListener('DOMContentLoaded', () => {
+    const gridContainer = document.getElementById('gridContainer');
+    const cardData = [
+      {
+        image: './blogs/images/LGPE.jpg',
+        title: 'Local Group Policy Editor',
+        details: 'Windows password policy', 
+        tags: ['Hacking', 'Forensic'],
+        url: '/blogs/blogs/LPGE.html'
+      },
+      {
+        image: '/blogs/images/siem.jpg',
+        title: 'SIEM in Azure Sentinel',
+        details: 'Cloud project, SIEM setup',
+        tags: ['Misc', 'Forensic'],
+        url: '/blogs/blogs/siem.html'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?interior1',
+        title: 'Minimalist Living',
+        details: 'Simplifying home spaces',
+        tags: ['Hacking', 'KALI LINUX'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?architecture1',
+        title: 'Urban Landscaping',
+        details: 'Blending nature with city life',
+        tags: ['Urban', 'Landscape'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?lighting1',
+        title: 'Lighting Solutions',
+        details: 'Creating ambiance through illumination',
+        tags: ['Lighting', 'Design'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?furniture1',
+        title: 'Ergonomic Designs',
+        details: 'Health-focused furniture',
+        tags: ['Furniture', 'Wellness'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?textiles1',
+        title: 'Modern Textiles',
+        details: 'Innovative fabric applications',
+        tags: ['Textiles', 'Materials'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?kitchen1',
+        title: 'Smart Kitchens',
+        details: 'Future of culinary spaces',
+        tags: ['Kitchen', 'Technology'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?bathroom1',
+        title: 'Spa-like Bathrooms',
+        details: 'Luxury wellness spaces',
+        tags: ['Bathroom', 'Wellness'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?outdoor1',
+        title: 'Outdoor Living',
+        details: 'Blending indoor comforts outside',
+        tags: ['Outdoor', 'Landscape'],
+        url: '#'
+      },
+      {
+        image: 'https://source.unsplash.com/random/800x600?retail1',
+        title: 'Commercial Spaces',
+        details: 'Optimizing retail environments',
+        tags: ['Commercial', 'Design'],
+        url: '#'
+      },
+    ];
+
+    function createCardElement(card) {
+      const cardElement = document.createElement('a');
+      cardElement.className = 'card wow fadeInUp';
+      cardElement.href = card.url;
+      cardElement.style.textDecoration = 'none';
+      cardElement.style.color = 'inherit';
+      cardElement.setAttribute('data-wow-delay', '0.3s');
+
+      cardElement.innerHTML = `
+        <img src="${card.image}" class="card-image" alt="${card.title}">
+        <div class="card-content">
+          <h3 class="card-title">${card.title}</h3>
+          <p class="card-details">${card.details}</p>
+          <div class="card-tags">
+            ${card.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      `;
+      return cardElement;
+    }
+
+    // Populate grid with cards
+    cardData.forEach((card, index) => {
+      const cardElement = createCardElement(card);
+      gridContainer.appendChild(cardElement);
+    });
+  });
+
+  // Add this after your existing DOMContentLoaded event listener
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryButtons = document.querySelectorAll('.cs_category_btn');
+    const cards = document.querySelectorAll('.card');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const category = button.dataset.category;
+        
+        // Show/hide cards based on category
+        cards.forEach(card => {
+          const cardTags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent);
+          
+          if (category === 'all' || cardTags.includes(category)) {
+            card.style.display = 'block';
+            // Trigger animation
+            card.classList.remove('wow', 'fadeInUp');
+            void card.offsetWidth; // Trigger reflow
+            card.classList.add('wow', 'fadeInUp');
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html> 

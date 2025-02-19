@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Laralink">
+  <!-- Favicon Icon -->
+  <link rel="icon" href="../../assets/img/favicon.png">
+  <!-- Site Title -->
+  <title>SIEM Implementation Guide</title>
+  <link rel="stylesheet" href="../../assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/plugins/fontawesome.min.css">
+  <link rel="stylesheet" href="../../assets/css/plugins/odometer-theme-default.css">
+  <link rel="stylesheet" href="../../assets/css/plugins/select2.min.css">
+  <link rel="stylesheet" href="../../assets/css/plugins/animate.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body>
+  <div class="cs_preloader cs_center">
+    <div class="cs_preloader_in"></div>
+  </div>
+  <!-- Start Header Section -->
+  <header class="cs_site_header cs_style_1 cs_sticky_header">
+    <div class="cs_main_header">
+      <div class="container">
+        <div class="cs_main_header_in">
+          <div class="cs_main_header_left">
+            <a class="cs_site_branding" href="../../index.html">
+              <img src="../../assets/img/logo.svg" alt="Logo">
+            </a>
+          </div>
+          <div class="cs_main_header_center">
+            <div class="cs_nav">
+              <ul class="cs_nav_list">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../blogs.html">Back to Blogs</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="cs_main_header_right">
+            <a href="../../contact.html" class="cs_btn cs_style_1 cs_primary_font"><span>Hire Me</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header Section -->
+
+  <!-- Main content inside start-->
+  <main>
+    <!-- Start Hero Section -->
+    <section class="cs_hero cs_style_3 cs_type_2 cs_filled_bg text-center" data-src="../../assets/img/bg/hero_bg_5.svg">
+      <div class="container">
+        <div class="cs_height_150 cs_height_lg_150"></div>
+        <div class="cs_height_60 cs_height_lg_30"></div>
+        <h1 class="cs_hero_title cs_font_92 cs_extra_bold wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+          <span class="cs_gradient_text_2">SIEM Implementation Guide</span>
+        </h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../../blogs.html">Blogs</a></li>
+          <li class="breadcrumb-item active">SIEM Implementation</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="cs_category cs_style_1 cs_white_bg cs_radius_10">
+              <ul class="cs_mp_0">
+                <li class="active"><a href="#phase1">Creating Azure Account</a></li>
+                <li><a href="#phase2">Windows Remote Server</a></li>
+                <li><a href="#phase3">Log Analytics Setup</a></li>
+                <li><a href="#phase4">Security Center</a></li>
+                <li><a href="#phase5">Azure Sentinel</a></li>
+                <li><a href="#phase6">VM Configuration</a></li>
+                <li><a href="#phase7">Custom Logs</a></li>
+                <li><a href="#phase8">Data Visualization</a></li>
+                <li><a href="#phase9">Monitoring</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="cs_pl_70">
+              <div class="cs_portfoli_details cs_style_1">
+                <div id="phase1">
+                  <h2 class="cs_portfolio_title cs_font_48">Phase 1: Creating Azure Account</h2>
+                  <p class="cs_portfolio_text">To begin implementing SIEM in Microsoft Azure, follow these initial steps:</p>
+                  <ul class="cs_list cs_style_1 cs_mp_30">
+                    <li>Sign up for a free Azure account with $200 worth of credits</li>
+                    <li>Create a resource group named "HoneypotLab"</li>
+                    <li>Navigate through Azure Portal for initial setup</li>
+                  </ul>
+                </div>
+
+                <div id="phase2" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 2: Creating Windows Remote Server</h2>
+                <p class="cs_portfolio_text">Setting up the Virtual Machine:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Create a VM named "HoneypotVM"</li>
+                  <li>Configure network settings and security groups</li>
+                  <li>Allow all inbound traffic for monitoring purposes</li>
+                </ul>
+
+                <div id="phase3" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 3: Log Analytics Workspace</h2>
+                <p class="cs_portfolio_text">Essential steps for log analytics:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Create "LAHoneypot" workspace</li>
+                  <li>Connect workspace to HoneypotVM</li>
+                  <li>Configure workspace settings</li>
+                </ul>
+
+                <div id="phase4" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 4: Security Center Configuration</h2>
+                <p class="cs_portfolio_text">Setting up security monitoring:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Enable Defender for Servers</li>
+                  <li>Configure data collection settings</li>
+                  <li>Set up event collection parameters</li>
+                </ul>
+
+                <div id="phase5" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 5: Azure Sentinel Setup</h2>
+                <p class="cs_portfolio_text">Implementing SIEM solution:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Create Azure Sentinel instance</li>
+                  <li>Connect to Log Analytics Workspace</li>
+                  <li>Configure initial settings</li>
+                </ul>
+
+                <div id="phase6" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 6: VM Data Collection</h2>
+                <p class="cs_portfolio_text">Configuring the Virtual Machine:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Disable Windows Firewall</li>
+                  <li>Set up PowerShell script for log collection</li>
+                  <li>Configure ipgeolocation.io API integration</li>
+                </ul>
+
+                <div id="phase7" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 7: Custom Log Configuration</h2>
+                <p class="cs_portfolio_text">Setting up custom logging:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Create FailedRDPWithGeo_CL custom log</li>
+                  <li>Configure field extraction</li>
+                  <li>Set up parsing rules</li>
+                </ul>
+
+                <div id="phase8" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 8: Data Visualization</h2>
+                <p class="cs_portfolio_text">Creating visual representations:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Set up Azure Sentinel workbook</li>
+                  <li>Configure world map visualization</li>
+                  <li>Create custom queries for data analysis</li>
+                </ul>
+
+                <div id="phase9" class="cs_height_45 cs_height_lg_30"></div>
+                <h2 class="cs_portfolio_title cs_font_36">Phase 9: Monitoring and Analysis</h2>
+                <p class="cs_portfolio_text">Ongoing maintenance and monitoring:</p>
+                <ul class="cs_list cs_style_1 cs_mp_30">
+                  <li>Regular workbook monitoring</li>
+                  <li>Pattern analysis of attack data</li>
+                  <li>Continuous visualization refinement</li>
+                </ul>
+
+                <div class="cs_portfolio_details_wrap row cs_height_45 cs_height_lg_30">
+                  <div class="col-md-6">
+                    <h4 class="cs_font_20 m-0">Implementation Time</h4>
+                    <p class="m-0">2-3 hours for complete setup</p>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="cs_font_20 m-0">Required Skills</h4>
+                    <p class="m-0">Azure, PowerShell, Basic Networking</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cs_height_145 cs_height_lg_75"></div>
+    </section>
+  </main>
+
+  <!-- Start Footer -->
+  <footer class="cs_footer cs_style_1 cs_filled_bg position-relative" data-src="../../assets/img/bg/footer_bg.svg">
+    <div class="position-absolute cs_footer_shape_1">
+      <img src="../../assets/img/footer_shape.svg" alt="">
+    </div>
+    <div class="container">
+      <div class="cs_footer_cta">
+        <h2 class="cs_font_92 cs_gradient_text_2 cs_semi_bold">Questions?</h2>
+        <a href="../../contact.html" class="cs_btn cs_style_1 cs_primary_font"><span>Let's Talk</span></a>
+      </div>
+      <div class="cs_copyright">RAJOOR</div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- Script -->
+  <script src="../../assets/js/plugins/jquery-3.6.0.min.js"></script>
+  <script src="../../assets/js/plugins/gsap.min.js"></script>
+  <script src="../../assets/js/plugins/isotope.pkg.min.js"></script>
+  <script src="../../assets/js/plugins/odometer.min.js"></script>
+  <script src="../../assets/js/plugins/wow.min.js"></script>
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html> 

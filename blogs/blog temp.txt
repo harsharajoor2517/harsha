@@ -1,0 +1,72 @@
+To help you maintain consistency across your blog pages and make future requests more efficient, here's a **design system template** you can reference in future requests. Just mention these parameters:
+
+---
+
+**Template Reference Command (V1.0):**  
+`USE_CYBER_THEME_V1` with the following parameters:
+
+1. **Color Scheme**  
+```ini
+primary_gradient = linear-gradient(45deg, #001, #003, #005)
+accent_1 = #00f3ff (cyber-blue)
+accent_2 = #0f0 (neon-green)
+background = #0a0a14 (dark-bg)
+code_text = #00ff00 (terminal-green)
+```
+
+2. **Typography**  
+```ini
+heading_font = 'VT323', monospace (glitch text)
+body_font = 'Ubuntu', sans-serif
+code_font = 'Ubuntu Mono', monospace
+```
+
+3. **Components**  
+```json
+{
+  "step_cards": {
+    "style": "hover-float",
+    "number_badge": "cyber-blue",
+    "border": "2px neon-cyan"
+  },
+  "image_gallery": {
+    "grid_layout": "responsive",
+    "hover_effect": "scale-up",
+    "modal_style": "cyber-border"
+  },
+  "code_blocks": {
+    "style": "terminal",
+    "border": "left-stroke-cyan",
+    "text_effect": "glow"
+  }
+}
+```
+
+4. **Interactive Elements**  
+```markdown
+- Method switcher (tabbed content)
+- Image modal with error handling
+- Hover-triggered glitch effects
+- Animated matrix background
+```
+
+---
+
+**For Future Requests, Just Mention:**  
+"Create [page/content type] using `USE_CYBER_THEME_V1` with:  
+- [New elements/sections needed]  
+- [Specific content/features]  
+- [Any modifications to above parameters]"  
+
+**Example Requests:**  
+1. "Make a cybersecurity tools comparison page using `USE_CYBER_THEME_V1` with comparison tables and download buttons"  
+2. "Create tutorial page about firewall config using `USE_CYBER_THEME_V1` with network diagrams and CLI examples"  
+3. "Build malware analysis guide with `USE_CYBER_THEME_V1` but change accent_1 to #ff0055 for red theme"
+
+**Need Modifications? Use These Keywords:**  
+- `COLOR_OVERRIDE`: Change specific colors  
+- `COMPONENT_ADD`: Add new UI elements  
+- `LAYOUT_CHANGE`: Modify existing structure  
+- `EFFECT_TOGGLE`: Enable/disable animations  
+
+This system will help me maintain design consistency while allowing flexibility for new content types. Would you like me to create a quick reference cheat sheet for these parameters?

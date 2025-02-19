@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securing Windows: Password Policy Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Ubuntu:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyber-blue: #00f3ff;
+            --dark-bg: #0a0a14;
+            --terminal-green: #00ff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            font-family: 'Ubuntu', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 3px solid var(--cyber-blue);
+            padding-bottom: 1rem;
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .step-container {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .step-card {
+            background: #1a1a2a;
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid #2a2a3a;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyber-blue);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: var(--cyber-blue);
+            color: var(--dark-bg);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .method-switcher {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .method-btn {
+            background: #2a2a3a;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .method-btn.active {
+            background: var(--cyber-blue);
+            color: var(--dark-bg);
+        }
+
+        .code-block {
+            background: #000;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--cyber-blue);
+            font-family: 'Ubuntu Mono', monospace;
+            color: var(--terminal-green);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .gallery-item {
+            border: 2px solid #2a2a3a;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-btn:hover {
+        color: #ff0000;
+        }
+
+        .modal-img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid var(--cyber-blue);
+            object-fit: contain;
+        }
+        .modal-img {
+            max-width: 95%;
+            max-height: 95%;
+            border: 3px solid var(--cyber-blue);
+            padding: 10px;
+            background: #000;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+        
+        .gallery-item img {
+            height: 250px;
+        }
+        
+        @media (min-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .gallery-item img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .step-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Add these new styles for the header */
+        .cs_site_header {
+            background: var(--dark-bg);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--cyber-blue);
+        }
+
+        .cs_main_header_in {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cs_nav_list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .cs_nav_list a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .cs_nav_list a:hover {
+            color: var(--cyber-blue);
+        }
+
+        .cs_btn {
+            background: var(--cyber-blue);
+            color: var(--dark-bg);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cs_btn:hover {
+            background: #fff;
+            color: var(--dark-bg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Header Section -->
+    <header class="cs_site_header">
+        <div class="cs_main_header">
+            <div class="container">
+                <div class="cs_main_header_in">
+                    <div class="cs_main_header_left">
+                        <a class="cs_site_branding" href="../index.html">
+                            <img src="../assets/img/logo.svg" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="cs_main_header_center">
+                        <div class="cs_nav">
+                            <ul class="cs_nav_list">
+                                <li><a href="../../index.html">Home</a></li>
+                                <li><a href="../../blogs.html">Back to Blogs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cs_main_header_right">
+                        <a href="../contact.html" class="cs_btn"><span>Hire Me</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Section -->
+
+    <div class="container">
+        <header class="blog-header">
+            <h1 class="blog-title">Windows Security: Mastering Password Policies</h1>
+            <p class="meta-info">Posted on August 15, 2023 | Security Administration</p>
+        </header>
+
+        <article class="blog-content">
+            <section class="step-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h2>Accessing Local Group Policy Editor</h2>
+                    <div class="method-switcher">
+                        <button class="method-btn active" onclick="showMethod(1)">Method 1</button>
+                        <button class="method-btn" onclick="showMethod(2)">Method 2</button>
+                    </div>
+                    
+                    <div class="method-content method-1">
+                        <p>Type Command Prompt on the search bar.</p>
+                        <p>Click on it to open the Command Prompt.</p>
+                        <p>Type the CMD mentioned below to open the LGPE</p>
+                        <p class="code-block">> gpedit</p>
+                        <div class="gallery">
+                            <div class="gallery-item" onclick="openModal('./Images/lpge/image-1.jpg')">
+                                <img src="./Images/lpge/image-1.jpg" alt="Command Prompt Admin">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('./Images/lpge/image-2.jpg')">
+                                <img src="./Images/lpge/image-2.jpg" alt="GPEdit Command">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="method-content method-2" style="display: none;">
+                        <p>Open run by clicking Win+R keys then type gpedit.msc and press Enter</p>
+                        <p class="code-block">Win + R > gpedit.msc</p>
+                        <div class="gallery">
+                            <div class="gallery-item" onclick="openModal('./Images/lpge/image-3.jpg')">
+                                <img src="./Images/lpge/image-3.jpg" alt="Run Dialog">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h2>Navigating Policy Editor Interface</h2>
+                    <p>This will open the Local Group Policy Editor. Here you will see that the Local Computer Policy is broken into two configurations:</p>
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="openModal('Images/lpge/image-4.jpg')">
+                            <img src="Images/lpge/image-4.jpg" alt="Policy Editor Interface">
+                        </div>
+                    </div>
+                    <p>Understand the two main configuration sections:</p>
+                    <ul>
+                        <li>Computer Configuration:  This holds settings that are applied to the computer when it is started.</li>
+                        <li>User Configuration: This holds settings that are applied to users when they sign into the computer.</li>
+                    </ul>
+                </div>
+
+                <!-- Add this inside the step-container section after step 2 -->
+                <div class="step-card">
+                  <div class="step-number">3</div>
+                  <h2>Navigating through Computer Configuration</h2>
+                  <p>Path to follow:</p>
+                  <p class="code-block">Computer Configuration → Windows Settings → Security Settings</p>
+                  <div class="gallery">
+                      <div class="gallery-item" onclick="openModal('Images/lpge/image-5.jpg')">
+                          <img src="Images/lpge/image-5.jpg" alt="Security Settings Path">
+                      </div>
+                  </div>
+                </div>
+                
+                <div class="step-card">
+                  <div class="step-number">4</div>
+                  <h2>Accessing Account Policies</h2>
+                  <p>Locate and click the Account Policies folder:</p>
+                  <div class="gallery">
+                      <div class="gallery-item" onclick="openModal('Images/lpge/image-6.jpg')">
+                          <img src="Images/lpge/image-6.jpg" alt="Account Policies Folder">
+                      </div>
+                  </div>
+                </div>
+
+                <div class="step-card">
+                  <div class="step-number">5</div>
+                  <h2>Password Policy Configuration</h2>
+                  <p>Open the Password Policy folder:</p>
+                  <div class="gallery">
+                      <div class="gallery-item" onclick="openModal('Images/lpge/image-7.jpg')">
+                          <img src="Images/lpge/image-7.jpg" alt="Password Policy Folder">
+                      </div>
+                  </div>
+                </div>
+
+                <div class="step-card">
+                  <div class="step-number">6</div>
+                  <h2>Policy Settings Overview</h2>
+                  <p>The right pane will display five key policies:</p>
+                  <div class="gallery">
+                      <div class="gallery-item" onclick="openModal('Images/lpge/image-8.jpg')">
+                          <img src="Images/lpge/image-8.jpg" alt="Password Policy Settings">
+                      </div>
+                  </div>
+                  <div class="code-block">
+                      • Enforce password history<br>
+                      • Maximum password age<br>
+                      • Minimum password age<br>
+                      • Minimum password length<br>
+                      • Password complexity requirements
+                  </div>
+                </div>
+
+                <div class="step-card">
+                  <div class="step-number">7</div>
+                  <h2>Configuring Security Settings</h2>
+                  <p>Adjust policies using recommended values:</p>
+                  <div class="code-block">
+                      Minimum password length: 12 characters<br>
+                      Maximum password age: 60 days<br>
+                      Enforce password history: 5 remembered passwords<br>
+                      Password complexity: Enabled
+                  </div>
+                  <p>Double-click each policy to modify its settings:</p>
+                  <div class="gallery">
+                      <div class="gallery-item" onclick="openModal('Images/lpge/image-9.jpg')">
+                          <img src="Images/lpge/image-9.jpg" alt="Policy Configuration Example">
+                      </div>
+                  </div>
+                </div>
+
+                <!-- Continue with other steps following similar structure -->
+            </section>  
+        </article>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img class="modal-img" id="modalImage">
+    </div>
+    <div class="modal" id="imageModal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img class="modal-img" id="modalImage">
+    </div>
+
+    <script>
+        // Method switcher functionality
+        function showMethod(methodNum) {
+            document.querySelectorAll('.method-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            document.querySelectorAll('.method-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.method-${methodNum}`).style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        // Image modal handling
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Image error handling
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.onerror = function() {
+                this.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+                this.alt = 'Image failed to load';
+            };
+        });
+    </script>
+</body>
+</html>
